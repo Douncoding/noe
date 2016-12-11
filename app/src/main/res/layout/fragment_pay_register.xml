@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/LargeText"
+        android:textColor="@color/payPrimaryColor"
+        android:text="새로운 결재수단을 등록하세요."/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <!-- 안내 멘트 -->
+            <LinearLayout
+                android:id="@+id/header_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="체크가드나 현금카드로 출금할 수 있는 계좌만 등록할 수 있습니다."/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/colorPrimaryDark"/>
+            </LinearLayout>
+
+            <!-- 기본 정보 그룹 -->
+            <LinearLayout
+                android:id="@+id/default_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/header_container">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/RegisterTextLabel.Pay"
+                    android:hint="은행">
+                    <EditText
+                        android:id="@+id/basic_info_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:inputType="textPersonName"
+                        android:nextFocusDown="@+id/basic_info_2"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/RegisterTextLabel.Pay"
+                    android:hint="계좌번호">
+                    <EditText
+                        android:id="@+id/basic_info_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:inputType="date"
+                        android:nextFocusDown="@+id/basic_info_3"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/RegisterTextLabel.Pay">
+                    <EditText
+                        android:id="@+id/basic_info_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:inputType="numberPassword"
+                        android:imeOptions="actionDone"
+                        android:hint="비밀번호"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="결제수단에 사용할 비콘을 입력하세요. (선택시 자동으로 검색합니다.)"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/colorPrimaryDark"/>
+
+                <!-- 비콘 정보 입력 -->
+                <LinearLayout
+                    android:id="@+id/beacon_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <!-- UUID 임시 저장소 -->
+                    <EditText
+                        android:id="@+id/beacon_uuid"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:theme="@style/RegisterTextLabel.Pay"
+                        android:hint="비콘 주요번호">
+                        <EditText
+                            android:id="@+id/beacon_major"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:inputType="number"
+                            android:maxEms="5"
+                            android:nextFocusDown="@+id/beacon_minor"/>
+                    </android.support.design.widget.TextInputLayout>
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent" />
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:theme="@style/RegisterTextLabel.Pay"
+                        android:hint="비콘 보조번호">
+                        <EditText
+                            android:id="@+id/beacon_minor"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:inputType="number"
+                            android:maxEms="5"
+                            android:imeOptions="actionDone"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

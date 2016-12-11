@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f2f2f2</color>
+    <color name="colorPrimaryDark">#d6d6d6</color>
+    <color name="colorAccent">#c4afd3</color>
+
+    <color name="textPrimaryColor">#FFF</color>
+
+    <color name="babyPrimaryColor">#FEC85D</color>
+    <color name="petPrimaryColor">#E797A8</color>
+    <color name="carPrimaryColor">#80BAEA</color>
+    <color name="payPrimaryColor">#c4afd3</color>
+</resources>

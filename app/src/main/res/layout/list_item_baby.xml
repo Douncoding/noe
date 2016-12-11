@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/baby_picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+        <RelativeLayout
+            android:id="@+id/baby_track_state"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_oval_solid_baby_primary"
+            android:padding="10dp"
+            android:layout_margin="16dp"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tint="@color/colorPrimary"
+                android:src="@drawable/ic_done"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:background="#80000000"
+            android:padding="16dp">
+
+            <!-- 메인 정보 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/baby_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/LargeText"
+                    android:text="이름"/>
+                <TextView
+                    android:id="@+id/baby_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    style="@style/MediumText"
+                    android:text="(이름)"/>
+            </LinearLayout>
+
+            <!-- 보조 정보 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="16dp">
+                <TextView
+                    android:id="@+id/baby_birthday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_cake"
+                    android:drawablePadding="4dp"
+                    style="@style/MediumText"
+                    android:text="2015.07.02"/>
+
+                <TextView
+                    android:id="@+id/baby_beacon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@drawable/ic_wifi_tethering"
+                    android:drawablePadding="4dp"
+                    style="@style/MediumText"
+                    android:text="12345 / 54321"/>
+            </LinearLayout>
+
+            <!-- 액션 그룹 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="16dp">
+                <TextView
+                    android:id="@+id/baby_start_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/LargeText"
+                    android:text="시작"/>
+                <Space
+                    android:layout_width="16dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/baby_stop_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/LargeText"
+                    android:text="중지"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

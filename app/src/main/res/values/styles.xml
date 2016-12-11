@@ -1,0 +1,91 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textColorError">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="AppTheme.Pet">
+        <item name="colorAccent">@color/babyPrimaryColor</item>
+        <item name="android:colorControlNormal">@color/petPrimaryColor</item>
+    </style>
+
+    <style name="AppTheme.Baby">
+        <item name="colorAccent">@color/babyPrimaryColor</item>
+        <item name="android:colorControlNormal">@color/babyPrimaryColor</item>
+    </style>
+
+    <style name="AppTheme.Pay">
+        <item name="colorAccent">@color/payPrimaryColor</item>
+        <item name="android:colorControlNormal">@color/payPrimaryColor</item>
+    </style>
+
+    <style name="AppTheme.Car">
+        <item name="colorAccent">@color/carPrimaryColor</item>
+        <item name="android:colorControlNormal">@color/carPrimaryColor</item>
+    </style>
+
+    <style name="SmallText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textPrimaryColor</item>
+    </style>
+
+    <style name="MediumText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textPrimaryColor</item>
+    </style>
+
+    <style name="LargeText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/textPrimaryColor</item>
+    </style>
+
+    <style name="LargeText.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 신규 추가화면의 EditText 테마 -->
+    <style name="RegisterTextLabel.Pet" parent="AppTheme">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/petPrimaryColor</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/petPrimaryColor</item>
+    </style>
+
+    <style name="RegisterTextLabel.Baby" parent="AppTheme">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/babyPrimaryColor</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/babyPrimaryColor</item>
+    </style>
+
+    <style name="RegisterTextLabel.Pay" parent="AppTheme">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/payPrimaryColor</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/payPrimaryColor</item>
+    </style>
+
+    <style name="RegisterTextLabel.Car" parent="AppTheme">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/carPrimaryColor</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/carPrimaryColor</item>
+    </style>
+</resources>

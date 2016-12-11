@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+        <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimaryDark"/>
+        <ImageView
+            android:id="@+id/face_picture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="8dp"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="9"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/event_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:textColor="#666666"/>
+
+        <TextView
+            android:id="@+id/event_target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <RelativeLayout
+            android:id="@+id/event_map"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/colorPrimaryDark"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:drawableLeft="@drawable/ic_alarm"
+            android:drawablePadding="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>

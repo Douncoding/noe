@@ -1,0 +1,116 @@
+import java.util.regex.Pattern
+
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.douncoding.noe"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile ':cc-beacon-library-1.0.0:@aar'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:cardview-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.google.android.gms:play-services-auth:9.6.1'
+    apt "com.google.dagger:dagger-compiler:2.7"
+    compile 'com.google.dagger:dagger:2.7'
+    compile 'io.reactivex:rxjava:1.1.10'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.orhanobut:logger:1.15'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+    compile 'pub.devrel:easypermissions:0.2.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'io.realm:realm-android-library:1.2.0'
+    compile 'com.firebaseui:firebase-ui-database:0.6.1'
+    compile 'com.google.firebase:firebase-database:9.6.1'
+    compile 'com.google.firebase:firebase-auth:9.6.1'
+    compile 'com.google.firebase:firebase-crash:9.6.1'
+    compile 'com.google.firebase:firebase-storage:9.6.1'
+    compile 'com.google.firebase:firebase-common:9.6.1'
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
+    compile 'com.github.medyo:fancybuttons:1.8.2'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.github.alamkanak:android-week-view:1.2.6'
+    compile 'com.roughike:bottom-bar:2.0.2'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.github.devlight:infinitecycleviewpager:1.0.2'
+    compile 'com.afollestad.material-dialogs:core:0.9.1.0'
+
+    compile files('libs/libDaumMapAndroid.jar')
+    compile files('libs/libDaumMapEngineApi.jar')
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+task('increaseVersionCode') << {
+    def manifestFile = file("src/main/AndroidManifest.xml")
+    def pattern = Pattern.compile("versionCode=\"(\\d+)\"")
+    def manifestText = manifestFile.getText()
+    def matcher = pattern.matcher(manifestText)
+    matcher.find()
+    def versionCode = Integer.parseInt(matcher.group(1))
+    def manifestContent = matcher.replaceAll("versionCode=\"" + ++versionCode + "\"")
+    manifestFile.write(manifestContent)
+}
+
+task('incrementVersionName') << {
+    def manifestFile = file("src/main/AndroidManifest.xml")
+    def patternVersionNumber = Pattern.compile("versionName=\"(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)\"")
+    def manifestText = manifestFile.getText()
+    def matcherVersionNumber = patternVersionNumber.matcher(manifestText)
+    matcherVersionNumber.find()
+    def majorVersion = Integer.parseInt(matcherVersionNumber.group(1))
+    def minorVersion = Integer.parseInt(matcherVersionNumber.group(2))
+    def pointVersion = Integer.parseInt(matcherVersionNumber.group(3))
+    def buildVersion = Integer.parseInt(matcherVersionNumber.group(4))
+    def mNextVersionName = majorVersion + "." + minorVersion + "." + pointVersion + "." + (buildVersion + 1)
+    def manifestContent = matcherVersionNumber.replaceAll("versionName=\"" + mNextVersionName + "\"")
+    manifestFile.write(manifestContent)
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'generateReleaseBuildConfig' || task.name == 'generateDebugBuildConfig') {
+        task.dependsOn 'increaseVersionCode'
+        task.dependsOn 'incrementVersionName'
+    }
+}

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "501297120041",
+    "firebase_url": "https://noe-cda2e.firebaseio.com",
+    "project_id": "noe-cda2e",
+    "storage_bucket": "noe-cda2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501297120041:android:92cb66ef600f8b54",
+        "android_client_info": {
+          "package_name": "com.douncoding.noe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501297120041-33773ip13ju988nndricf3gtpk99ajiu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.douncoding.noe",
+            "certificate_hash": "E3D7485C701E47B5199284D37B6182BEA7EFECC8"
+          }
+        },
+        {
+          "client_id": "501297120041-lmfkjvrveouac7fs2h75urkg5ahoqtto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgUXga7Zab3j_XKRMwTRXvC4XzN9CQlkw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501297120041-lmfkjvrveouac7fs2h75urkg5ahoqtto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

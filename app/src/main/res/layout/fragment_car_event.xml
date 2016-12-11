@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp">
+
+    <!-- Eempty View -->
+    <RelativeLayout
+        android:id="@+id/item_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:id="@+id/empty_circle"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_oval_border_primary"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:tint="@color/colorPrimaryDark"
+            android:src="@drawable/ic_car"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/empty_circle"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            style="@style/SmallText"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="등록된 차량이 없습니다. 새로운 차량을 등록해보세요."/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/event_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/management_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_assignment"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/carPrimaryColor"/>
+</android.support.design.widget.CoordinatorLayout>

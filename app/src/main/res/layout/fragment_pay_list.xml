@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/bg_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <!-- Eempty View -->
+            <RelativeLayout
+                android:id="@+id/item_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:id="@+id/empty_circle"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_oval_border_primary"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:tint="@color/colorPrimaryDark"
+                    android:src="@drawable/ic_payment"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/empty_circle"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    style="@style/SmallText"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="등록된 결제수단이 없습니다. 새로운 계좌를 등록해보세요."/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/item_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/new_item"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_corner_white"
+            android:layout_margin="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                style="@style/LargeText"
+                android:textColor="@color/payPrimaryColor"
+                android:text="새로운 계좌 추가"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

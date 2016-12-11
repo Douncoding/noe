@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NOE</string>
+    <string name="announce_failure_system">시스템 관리자에게 문의하세요.</string>
+
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+    <string name="nav_item_logout">Logout</string>
+
+    <string name="picture_chooser_title">Select or take picture to post</string>
+    <string name="announce_system_error_message">관리자에게 문의하세요.</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCAhlwue6yoJeeuHYe7zzm9wxb3xcuVWKg</string>
+</resources>
