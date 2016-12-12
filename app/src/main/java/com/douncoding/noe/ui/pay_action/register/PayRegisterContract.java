@@ -31,6 +31,8 @@ public interface PayRegisterContract {
         void showRegisterSuccess();
         // 등록 실패
         void showRegisterFailure();
+
+        void showRegisterFailureWithAlreadyBeacon();
     }
 
     interface Presenter extends BaseContract.Presenter {

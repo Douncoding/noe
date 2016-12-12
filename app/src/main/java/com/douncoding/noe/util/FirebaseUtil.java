@@ -45,12 +45,28 @@ public class FirebaseUtil {
         return getBaseRef().child("beacons");
     }
 
+    public static DatabaseReference getBeaconPayRef() {
+        return getBaseRef().child("beacons").child("pay");
+    }
+
+    public static DatabaseReference getBeacoBabyRef() {
+        return getBaseRef().child("beacons").child("baby");
+    }
+
+    public static DatabaseReference getBeaconPetRef() {
+        return getBaseRef().child("beacons").child("pet");
+    }
+
     public static DatabaseReference getPeopleRef() {
         return getBaseRef().child("people");
     }
 
     public static DatabaseReference getPaysRef() {
         return getBaseRef().child("pays"); //등록된 카드 정보
+    }
+
+    public static DatabaseReference getPaymentRef() {
+        return getBaseRef().child("payment");
     }
 
     public static DatabaseReference getCurrentUserHasPetRef() {

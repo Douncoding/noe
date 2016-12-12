@@ -1,8 +1,8 @@
 package com.douncoding.noe.model;
 
 public class Pay {
-    private Beacon beacon;
     private String uid;
+    private String beacon;
 
     private String bankname;
     private String account;
@@ -11,19 +11,20 @@ public class Pay {
     public Pay() {
     }
 
-    public Pay(Beacon beacon, String bankname, String account, String password) {
-        this.beacon = beacon;
+    public Pay(String uid, String beacon, String bankname, String account, String password) {
+        this.uid = uid;
         this.bankname = bankname;
         this.account = account;
         this.password = password;
-    }
-
-    public Beacon getBeacon() {
-        return beacon;
-    }
-
-    public void setBeacon(Beacon beacon) {
         this.beacon = beacon;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getBankname() {
@@ -50,11 +51,11 @@ public class Pay {
         this.password = password;
     }
 
-    public String getUid() {
-        return uid;
+    public String getBeacon() {
+        return beacon;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setBeacon(String beacon) {
+        this.beacon = beacon;
     }
 }

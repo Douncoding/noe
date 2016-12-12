@@ -5,7 +5,7 @@ package com.douncoding.noe.model;
  */
 
 public enum  TrackType {
-    PET("PET"), BABY("BABY");
+    PET("PET"), BABY("BABY"), PAY("PAY"), CAR("CAR");
 
     private String type;
 

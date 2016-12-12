@@ -13,6 +13,9 @@ import com.douncoding.noe.ui.BaseFragment;
 import com.douncoding.noe.ui.BasePresenter;
 import com.douncoding.noe.ui.babys_action.list.BabyListFragment;
 import com.douncoding.noe.ui.pets_action.list.PetListPresenter;
+import com.orhanobut.logger.Logger;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,18 +79,11 @@ public class PayListFragment extends BaseFragment implements PayListContract.Vie
 
     @Override
     protected void initData() {
-        setupRecyclerView();
-        presenter.onItemLoad();
+
     }
 
     @OnClick(R.id.new_item) public void onNewItemClicked() {
         onFragmentListener.onNewItemClick();
-    }
-
-    private void setupRecyclerView() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PayListAdapter();
-        mRecyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -100,9 +96,23 @@ public class PayListFragment extends BaseFragment implements PayListContract.Vie
         super.dismissProgressDialog();
     }
 
+    /**
+     * 실시간으로 추가될 필요성이 없기 때문에 아이템을 추가하는 형태가 아닌 한번에 랜더링하는 방식으로 변경한다.
+     * 새로운 항목이 등록되는 경우에도 Firebase Database의 모든항목에 접근해야 하기때문에 해당 방법이 적합하다고 판단한다.
+     */
     @Override
-    public void addPayment(String key, Pay item) {
-        mEmptyView.setVisibility(View.GONE);
-        adapter.add(item);
+    public void renderPaymentList(List<Pay> items) {
+        if (items.size() < 0) {
+            mEmptyView.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
+        } else {
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            adapter = new PayListAdapter(items);
+            mRecyclerView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+            mEmptyView.setVisibility(View.GONE);
+            mRecyclerView.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -11,19 +11,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.douncoding.noe.R;
+import com.douncoding.noe.service.BeaconService;
 import com.douncoding.noe.ui.BaseActivity;
 import com.douncoding.noe.ui.baby.BabyFragment;
 import com.douncoding.noe.ui.car.CarEventFragment;
 import com.douncoding.noe.ui.pay_action.PayMgmtActivity;
 import com.douncoding.noe.ui.pet.PetFragment;
-import com.google.firebase.auth.FirebaseAuth;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
-    MenuFragment.OnFragmentListener {
+    MenuFragment.OnFragmentListener, MainContract.View {
     public static void startActivity(Context context) {
         if (context != null) {
             context.startActivity(new Intent(context, MainActivity.class));
@@ -54,6 +53,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         // 시작화면은 항상 선택메뉴 화면으로 고정된다.
         addFragment(R.id.fragment_container, MenuFragment.newInstance(), MenuFragment.TAG);
+
+        presenter.sendToFCM();
+        presenter.startBeaconService();
     }
 
     @Override

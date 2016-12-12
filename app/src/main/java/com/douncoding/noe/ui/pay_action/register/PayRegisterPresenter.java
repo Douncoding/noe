@@ -6,17 +6,16 @@ import com.douncoding.noe.service.BeaconService;
 import com.douncoding.noe.ui.BasePresenter;
 import com.douncoding.noe.util.FirebaseUtil;
 import com.google.firebase.crash.FirebaseCrash;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-/**
- * Created by douncoding on 2016. 12. 9..
- */
 
 public class PayRegisterPresenter extends BasePresenter<PayRegisterContract.View> implements PayRegisterContract.Presenter {
     @Override
@@ -43,23 +42,44 @@ public class PayRegisterPresenter extends BasePresenter<PayRegisterContract.View
         }
 
         // 비콘정보 확인
-        Beacon beacon = pay.getBeacon();
-        if (beacon.getUuid().isEmpty() || beacon.getMajor().isEmpty() || beacon.getMinor().isEmpty()) {
-            mView.showRequestInputField(3);
+        if (pay.getBeacon().isEmpty()) {
+            mView.showRequestInputField(2);
             return ;
         }
 
+        // 중복확인
+        FirebaseUtil.getBeaconPayRef().child(pay.getBeacon()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // 이미 등록된 비콘 목록 - 이렇게 하면 결국 타입을 전부 찾아야 한다는 단점이 존재한다.
+                // 따라서, 처음 부터 타입을 나누어서 저장하는 것이 이득이 크다.
+                if (dataSnapshot.exists()) {
+                    mView.showRegisterFailure();
+                } else {
+                    submitToFirebase(pay);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                databaseError.toException().printStackTrace();
+            }
+        });
+    }
+
+    private void submitToFirebase(final Pay pay) {
         mView.showProgressDialog();
 
         DatabaseReference paysRef = FirebaseUtil.getPaysRef();
-        DatabaseReference beaconRef = FirebaseUtil.getBeaconRef();
+        DatabaseReference beaconRef = FirebaseUtil.getBeaconPayRef();
         DatabaseReference peopleRef = FirebaseUtil.getCurrentUserHasPayRef();
 
         Map<String, Object> updateUserData = new HashMap<>();
-        final String babyKey = paysRef.push().getKey();
-        updateUserData.put(FirebaseUtil.getPath(paysRef) + "/" + babyKey, pay);
-        updateUserData.put(FirebaseUtil.getPath(beaconRef) + "/" + beaconRef.push().getKey(), beacon);
-        updateUserData.put(FirebaseUtil.getPath(peopleRef) + "/" + babyKey, true);
+        final String payKey = paysRef.push().getKey();
+
+        updateUserData.put(FirebaseUtil.getPath(paysRef) + "/" + payKey, pay);
+        updateUserData.put(FirebaseUtil.getPath(beaconRef) + "/" + pay.getBeacon(), payKey);
+        updateUserData.put(FirebaseUtil.getPath(peopleRef) + "/" + payKey, true);
 
         // 데이터베이스 기록
         FirebaseUtil.getBaseRef().updateChildren(updateUserData, (databaseError, databaseReference) -> {

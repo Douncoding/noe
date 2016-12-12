@@ -18,6 +18,7 @@ import com.douncoding.noe.model.Pay;
 import com.douncoding.noe.ui.BaseFragment;
 import com.douncoding.noe.ui.BasePresenter;
 import com.douncoding.noe.ui.component.BeaconItemAdapter;
+import com.douncoding.noe.util.FirebaseUtil;
 
 import java.util.List;
 
@@ -103,10 +104,14 @@ public class PayRegisterFragment extends BaseFragment implements PayRegisterCont
     }
 
     private void onSubmitClicked() {
-        Beacon beacon = new Beacon(mBeaconUuidEdit.getText().toString(),
-                mBeaconMajorEdit.getText().toString(), mBeaconMinorEdit.getText().toString());
+        String builder =
+                 mBeaconUuidEdit.getText().toString() +
+                 mBeaconMajorEdit.getText().toString() +
+                 mBeaconMinorEdit.getText().toString();
 
-        Pay pay = new Pay(beacon,
+        Pay pay = new Pay(
+                FirebaseUtil.getCurrentUserId(),
+                builder,
                 mBankName.getText().toString(),
                 mAccountNumber.getText().toString(),
                 mPassword.getText().toString());
@@ -165,5 +170,11 @@ public class PayRegisterFragment extends BaseFragment implements PayRegisterCont
     @Override
     public void showRequestInputField(int loc) {
         showToastMessage("모든 정보를 정확하게 입력하세요.");
+    }
+
+    @Override
+    public void showRegisterFailureWithAlreadyBeacon() {
+        showToastMessage("이미 등록된 비콘 입니다. 다른 비콘을 이용해 시도해주세요.");
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 }

@@ -20,9 +20,6 @@ public class AndroidApplication extends Application {
 
         // 앱내 로그 처리 초기화
         Logger.init(getString(R.string.app_name));
-
-        // 비콘서비스 활성화
-        startService(new Intent(this, BeaconService.class));
     }
 
 

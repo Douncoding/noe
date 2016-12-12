@@ -84,7 +84,8 @@ public class EventGenerator {
         /**
          * 감지되지 않은 항목 처리: {@link EventStatus#BREAKAWAY} 상태
          */
-        for (Beacon key : dataSet.keySet()) {
+        List<Beacon> cloneItems = new ArrayList<>(dataSet.keySet());
+        for (Beacon key : cloneItems) {
             // 감지된 비콘목록 중에 기존에 저장된 비콘이 없는 경우 (신호를 감지 못하는 경우)
             if (!beacons.contains(key)) {
                 DistanceLevel level = dataSet.get(key);

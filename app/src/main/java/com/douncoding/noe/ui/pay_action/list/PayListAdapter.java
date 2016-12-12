@@ -15,8 +15,8 @@ import java.util.List;
 public class PayListAdapter extends RecyclerView.Adapter<PayViewHolder> {
     private List<Pay> dataSet;
 
-    public PayListAdapter() {
-        dataSet = new ArrayList<>();
+    public PayListAdapter(List<Pay> items) {
+        dataSet = items;
     }
 
     @Override
@@ -37,10 +37,5 @@ public class PayListAdapter extends RecyclerView.Adapter<PayViewHolder> {
     @Override
     public int getItemCount() {
         return dataSet.size();
-    }
-
-    public void add(Pay pay) {
-        dataSet.add(pay);
-        notifyItemChanged(dataSet.size()-1);
     }
 }

@@ -13,5 +13,9 @@ public interface MainContract {
 
     interface Presenter extends BaseContract.Presenter {
         void onLogout();
+
+        void sendToFCM();
+
+        void startBeaconService();
     }
 }
