@@ -61,6 +61,7 @@
                     android:orientation="vertical"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/bg_layout_etc"
                     >
 
